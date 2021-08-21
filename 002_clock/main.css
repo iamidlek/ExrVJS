@@ -1,0 +1,83 @@
+html {
+  background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+  background-size: cover;
+  font-family: 'helvetica neue';
+  text-align: center;
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+}
+
+.clock {
+  width: 30rem;
+  height: 30rem;
+  border: 20px solid white;
+  border-radius: 50%;
+  margin: 50px auto;
+  position: relative;
+  padding: 2rem;
+  box-shadow:
+  0 0 0 4px rgba(0,0,0,0.1),
+  inset 0 0 0 3px #EFEFEF,
+  inset 0 0 10px black,
+  0 0 10px rgba(0,0,0,0.2);
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* account for the height of the clock hands */
+  /* transform: translateY(-3px);  */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hand {
+  height: 6px;
+  position: absolute;
+  top: 48%;
+  /* 100% = right 동일 */
+  transform-origin: right;
+  transition: all 0.05s;
+  /* https://cubic-bezier.com/ */
+  transition-timing-function: cubic-bezier(0,1.96,.69,.64);
+  /* 시작점 */
+  transform: rotate(90deg);
+}
+.hand-pin{
+  width: 5%;
+  height: 5%;
+  border-radius: 50%;
+  background-color: #000;
+  position: absolute;
+  left: 46.5%;
+  top: 46.5%;
+  z-index: 10;
+}
+.hour-hand{
+  width: 30%;
+  background: goldenrod;
+  left: 20%;
+  z-index: 1;
+}
+.min-hand{
+  width: 50%;
+  background: black;
+  left: 0;
+  z-index: 2;
+}
+.second-hand{
+  width: 50%;
+  background: red;
+  height: 2px;
+  left: 0;
+}
