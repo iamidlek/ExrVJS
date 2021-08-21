@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>keydown</title>
+  <link rel="stylesheet" href="./main.css" />
+  <script defer src="./main.js"></script>
+</head>
+<body>
+
+  <div class="key-container">
+    <!-- ascii code -->
+    <div data-key="67" class="key">
+      <!-- 키보드 -->
+      <kbd>C</kbd>
+      <span class="sound">Do</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">Re</span>
+    </div>
+    <div data-key="69" class="key">
+      <kbd>E</kbd>
+      <span class="sound">Mi</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">Fa</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">So</span>
+    </div>
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">La</span>
+    </div>
+    <div data-key="66" class="key">
+      <kbd>B</kbd>
+      <span class="sound">Ti</span>
+    </div>
+    <div data-key="49" class="key">
+      <kbd>1</kbd>
+      <span class="sound">Do</span>
+    </div>
+  </div>
+
+  <!-- data-key로 값을 맞춰주면 js에서 불러오기 편함 -->
+  <audio data-key="67" src="audio/sound1.mp3"></audio>
+  <audio data-key="68" src="audio/sound2.mp3"></audio>
+  <audio data-key="69" src="audio/sound3.mp3"></audio>
+  <audio data-key="70" src="audio/sound4.mp3"></audio>
+  <audio data-key="71" src="audio/sound5.mp3"></audio>
+  <audio data-key="65" src="audio/sound6.mp3"></audio>
+  <audio data-key="66" src="audio/sound7.mp3"></audio>
+  <audio data-key="49" src="audio/sound8.mp3"></audio>
+</body>
+</html>
