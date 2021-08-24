@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped CSS Variables and JS</title>
+  <link rel="stylesheet" href="main.css">
+  <script defer src="main.js"></script>
+</head>
+<body>
+  
+  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+  <div class="controls">
+    <!-- for 과 id로 묶어주기 -->
+    <label for="spacing">Spacing:</label>
+    <!-- value는 type range의 보여지는 부분의 값을 설정 -->
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+    <label for="blur">Blur:</label>
+    <input id="blur" type="range" name="blur" min="0" max="25" value="0" data-sizing="px">
+
+    <label for="base">Base Color</label>
+    <!-- color 의 경우 value에 단축이 안먹음 #fff 안됨 -->
+    <input id="base" type="color" name="base" value="#ffffff">
+  </div>
+
+  <div class="imgbox">
+    <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  </div>
+
+</body>
+</html>
