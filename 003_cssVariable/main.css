@@ -1,0 +1,40 @@
+/* 변수 만들기 */
+:root {
+  --base: #FFF;
+  --spacing: 10px;
+  --blur: 0px;
+}
+
+/* 공통 부분 */
+body {
+  text-align: center;
+  background: #193549;
+  color: white;
+  font-family: 'helvetica neue', sans-serif;
+  font-weight: 100;
+  font-size: 50px;
+  position: relative;
+}
+.controls {
+  margin-bottom: 50px;
+}
+input {
+  width: 100px;
+}
+.imgbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 900px;
+}
+
+/* 변수 사용 */
+img {
+  filter: blur(var(--blur));
+  background: var(--base);
+  padding: var(--spacing);
+}
+
+.hl {
+  color: var(--base);
+}
