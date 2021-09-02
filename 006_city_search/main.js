@@ -11,7 +11,6 @@ fetch(endpoint)
   // 배열로 되어있는 data를 spread해서 넣어준다
   .then(data => cities.push(...data));
 
-
 // 파라미터로 검색한 값, 도시 목록을 받는다
 function findMatches(wordToMatch, cities) {
   return cities.filter(place => {
