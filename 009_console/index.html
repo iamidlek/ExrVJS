@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('hello');
+
+    // Interpolated
+    // %s
+    console.log('Hello I am a %s string!', '💩');
+
+    // Styled
+    // %c
+    // console.log('%c I am some great text', 'font-size:50px; background:red; text-shadow: 10px 10px 0 blue')
+
+    // warning!
+    // 경고 표시
+    console.warn('OH NOOO');
+
+    // Error :|
+    // 에러 표시
+    console.error('Shit!');
+
+    // Info
+    // 정보 표시
+    console.info('Crocodiles eat 3-4 people per year');
+
+    // Testing
+    // ouch라는 값이 없어서 false를 첫 인자로 받으면
+    // 에러메세지 출력 'That is wrong!'
+    // true면 실행사항 없음
+    const p = document.querySelector('p');
+
+    console.assert(p.classList.contains('ouch'), 'That is wrong!');
+
+    // clearing
+    // 콘솔창 클리어
+    console.clear();
+
+    // Viewing DOM Elements
+      // 요소 <>...<> 그 자체를 보여줌
+    console.log(p);
+      // 속성 프로퍼티 메소드 확인 가능
+    console.dir(p);
+
+    console.clear();
+
+    // Grouping together
+      // groupCollapsed 의 시작부터 끝까지를
+      // 토글 목록으로 만들어준다
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+    // Wes: 1 ... wes:4
+    // Steve: 1 ... Steve:8
+
+    // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        // 걸린 시간
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+    // 태아불 형식 출력
+    console.table(dogs);
+
+  </script>
+</body>
+</html>
