@@ -11,9 +11,10 @@ fetch(endpoint)
   // 배열로 되어있는 data를 spread해서 넣어준다
   .then(data => cities.push(...data));
 
-// 파라미터로 검색한 값, 도시 목록을 받는다
+  // 파라미터로 검색한 값, 도시 목록을 받는다
 function findMatches(wordToMatch, cities) {
   return cities.filter(place => {
+    // console.log(place)
     // here we need to figure out if the city or state matches what was searched
     // 찾는 단어가 고정이 아니므로 정규표현식을 선언형식으로 만든다
     const regex = new RegExp(wordToMatch, 'gi');
@@ -33,7 +34,6 @@ function displayMatches() {
   // this.value는 입력창에 있는 글자를 의미
   const matchArray = findMatches(this.value, cities);
     // matchArray는 [object,] 형태로 city나 state가 일치하는 객체들이 배열로 옴
-  
   const html = matchArray.map(place => {
     // 하이라이트를 표시하기위해 현재 입력된 값과 일치하는 부분을 찾고 class="hl"으로 감싼다
     const regex = new RegExp(this.value, 'gi');
