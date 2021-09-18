@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+</head>
+<body>
+
+  <script>
+// 단순복제는 완전히 동일한 객체,
+// 얕은복사(shallow copy)는 복합객체(껍데기)만 복사, 그 내용은 동일한 객체
+// 깊은복사(deep copy)는 복합객체 복사 + 그 내용도 재귀적으로 복사
+    // start with strings, numbers and booleans
+    // let age = 100;
+    // let age2 = age;
+    // console.log(age, age2);
+    // 결과는 100 100
+    // age = 200;
+    // console.log(age, age2);
+    // 결과는 200 100
+
+    // let name = 'Wes';
+    // let name2 = name;
+    // console.log(name, name2);
+    // name = 'wesley';
+    // console.log(name, name2);
+    // 결과는 wesley wes
+
+    // Let's say we have an array
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+    // and we want to make a copy of it.
+    const team = players;
+
+    console.log(players, team);
+    // You might think we can just do something like this:
+    // team[3] = 'Lux';
+
+    // however what happens when we update that array?
+
+    // now here is the problem!
+
+    // 배열도 값은 같이 바뀐다
+    // oh no - we have edited the original array too!
+
+    // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+
+
+    // So, how do we fix this? We take a copy instead!
+    // 슬라이스 ( ) 지정없이 하면 밖의 mutable이 깊은 복사 처럼 된다 그러나 그건 안에 imutable 값만 있을 경우
+    const team2 = players.slice();
+    // team2를 변경해도 원본에 영향 없음
+    // deep copy는 아니다 리스트안에 리스트 mutable객체 안에 mutable객체인 경우 문제가 됩니다.
+    // one way
+
+    // or create a new array and concat the old one in
+    const team3 = [].concat(players);
+    // concat으로 빈배열에 합쳐 넣기
+
+    // or use the new ES6 Spread
+    // 스프레드 사용하기
+    const team4 = [...players];
+    team4[3] = 'heeee hawww';
+    console.log(team4);
+
+    // 어레이 프롬으로도 가능하다
+    const team5 = Array.from(players);
+
+    // now when we update it, the original one isn't changed
+
+    // The same thing goes for objects, let's say we have a person object
+
+
+
+    // with Objects
+    const person = {
+      name: 'Wes Bos',
+      age: 80
+    };
+
+    // 원본 객체의 값이 변한다
+    // and think we make a copy:
+    // const captain = person;
+    // captain.number = 99;
+
+    // how do we take a copy instead?
+    // 빈 객체에 넣는 방법 내용추가 및 내용 업데이트가 일어난다
+    const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+    console.log(cap2); // 이름 나이 넘버 가 각각 나온다
+
+    // We will hopefully soon see the object ...spread
+    // const cap3 = {...person};
+
+    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+
+    const wes = {
+      name: 'Wes',
+      age: 100,
+      social: {
+        twitter: '@wesbos',
+        facebook: 'wesbos.developer'
+      }
+    };
+
+    console.clear();
+    console.log(wes);
+
+    // 위에서 본 방법 그대로 wes와 dev는 한단계만 deepcopy된 다른 객체
+    // 객체 안에 또 객체 혹은 또 배열이 있을 경우는 연동되어 변경된다
+    const dev = Object.assign({}, wes);
+    // 즉 dev.social.twitter 값을 바꾸면 wes의 값도 바뀐다
+
+    // 권장하지 않지만 완전한 deep copy 처럼 하려면 문자로 바꾼후 다시 parse한다
+    const dev2 = JSON.parse(JSON.stringify(wes));
+
+
+  </script>
+
+</body>
+</html>
